@@ -12,7 +12,6 @@
 
 #define HHKVO_Name @"HHKVO"
 #define HHKVO_Observer_Key "HHKVO_Observer_Key"
-#define HHKVO_Context_Key @"HHKVO_Context_Key"
 #define HHKVO_Changet_Key "HHKVO_Change_Key"
 
 @implementation NSObject (HHKVO)
@@ -63,7 +62,7 @@ static void kvo_setter(id self,SEL _cmp,id newValue){
     NSDictionary * dict = @{@"new":newValue,@"kind":optionsNumber};
     // 通知观察者，执行通知方法
     objc_msgSend(objc, @selector(observeValueForKeyPath:ofObject:change:context:), keypath, self, dict, newValue);
-    // 重新修改为ZJKVO_Person类
+    // 重新修改为KVO_Person类
     object_setClass(self, kvoClass);
     
 }
